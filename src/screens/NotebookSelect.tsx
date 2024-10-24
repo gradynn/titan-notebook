@@ -6,7 +6,7 @@ const NotebookSelect = () => {
     
     return (
         <div className="flex flex-col items-center justify-center h-screen">
-            <h2 className="text-6xl font-semibold mb-4 text-white">Titan</h2>
+            <h2 className="text-6xl font-logo mb-4 text-white">Titan Notebook</h2>
             <p className="text-lg mb-6 text-gray-600">
                 To get started, create a new notebook.
             </p>

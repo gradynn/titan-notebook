@@ -9,7 +9,12 @@ module.exports = {
       'background2': '#282828',
       'primary': '#007bff',
     },
-    extend: {},
+    extend: {
+      fontFamily: {
+        sans: ['Inter', 'sans-serif'],
+        logo: ['Montserrat', 'sans-serif'],
+      }
+    },
   },
   plugins: [],
 }

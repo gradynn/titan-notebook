@@ -7,7 +7,7 @@ const App: React.FC = () => {
     const [openNotebooks, setOpenNotebooks] = useState<Notebook[]>([]);
     
     return (
-      <div className="min-h-screen bg-background flex items-center justify-center">
+      <div className="min-h-screen bg-background flex items-center justify-center font-sans">
         {
             openNotebooks.length > 0 ? <div></div> : <NotebookSelect />
         }
