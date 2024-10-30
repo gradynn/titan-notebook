@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { CgClose } from "react-icons/cg";
 import { IoAdd } from "react-icons/io5";
 import { WiMoonAltWaxingCrescent2 } from "react-icons/wi";
@@ -20,6 +20,17 @@ const TabBar = ( { openNotebooks, activeNotebook, setActiveNotebook, closeNotebo
     const [showAddNotebookModal, setShowAddNotebookModal] = useState<boolean>(false);
     const [showCreateNotebookModal, setShowCreateNotebookModal] = useState<boolean>(false);
     const [showOpenNotebookModal, setShowOpenNotebookModal] = useState<boolean>(false);
+
+    // Pass callbacks to Electron main process for menu items
+    useEffect(() => {
+        window.electron.onOpenFileCmd(() => {
+            setShowOpenNotebookModal(true);
+        })
+
+        return () => {
+            window.electron.onOpenFileCmd(() => {});
+        }
+    }, []);
     
     const handleTabChange = (index: number) => {
         setActiveNotebook(index);

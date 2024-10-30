@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { IoCreateOutline } from "react-icons/io5";
 import { FaRegFolderOpen } from "react-icons/fa";
 
@@ -15,6 +15,17 @@ interface NotebookSelectProps {
 const NotebookSelect = ( { openNotebook }: NotebookSelectProps ) => {
     const [showCreateNotebookModal, setShowCreateNotebookModal] = useState<boolean>(false);
     const [showOpenNotebookModal, setShowOpenNotebookModal] = useState<boolean>(false);
+
+    // Pass callbacks to Electron main process for menu items
+    useEffect(() => {
+        window.electron.onOpenFileCmd(() => {
+            setShowOpenNotebookModal(true);
+        })
+
+        return () => {
+            window.electron.onOpenFileCmd(() => {});
+        }
+    }, []);
     
     return (
         <div className="flex flex-col items-center justify-center h-screen">

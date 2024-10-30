@@ -5,4 +5,7 @@ import { contextBridge, ipcRenderer } from 'electron';
 contextBridge.exposeInMainWorld('electron', {
   selectFile: () => ipcRenderer.invoke('select-file'),
   openNotebookFile: (filePath: string) => ipcRenderer.invoke('open-notebook-file', filePath),
+  
+  // Application Menu Items
+  onOpenFileCmd: (callback: () => void) => ipcRenderer.on('on-open-file-cmd', callback),
 });

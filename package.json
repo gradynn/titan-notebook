@@ -1,8 +1,8 @@
 {
-  "name": "titan-notebook",
-  "productName": "titan-notebook",
+  "name": "Titan",
+  "productName": "Titan",
   "version": "1.0.0",
-  "description": "My Electron application description",
+  "description": "Jupyter notebook clone",
   "main": ".vite/build/main.js",
   "scripts": {
     "start": "electron-forge start",
@@ -35,7 +35,7 @@
   "keywords": [],
   "author": {
     "name": "Gradyn Nagle",
-    "email": "gradyndnagle@outlook.com"
+    "email": "gradyndn@gmail.com"
   },
   "license": "MIT",
   "dependencies": {
