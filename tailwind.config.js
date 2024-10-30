@@ -10,6 +10,7 @@ module.exports = {
       'primary': '#007bff',
       'secondary': '#85a4ff',
       'white': '#ffffff',
+      'danger': "#ff4444"
     },
     extend: {
       fontFamily: {

@@ -1,29 +1,16 @@
 export default interface Notebook {
-    nbformat: number;
-    nbformat_minor: number;
-    metadata: {
-        notebook_name: string;
-        authors: { name: string }[];
-        kernelspec: KernelSpec;
-    },
+    filepath: string,
+    name: string,
     cells: Cell[];
 }
 
-export interface KernelSpec {
-    display_name: string;
-    name: string;
-}
-
 export interface Cell {
-    metadata: {
-        id: string;
-    }
-    cell_type: 'markdown' | 'code';
+    cellType: 'markdown' | 'code';
     source: string[];
-    execution_count: number | null;
+    executionCount: number | null;
     outputs?: Output[]
 }
 
 export interface Output {
-    output_type: 'stream' | 'display_data' | 'execute_result' | 'error';
+    outputType: 'stream' | 'display_data' | 'execute_result' | 'error';
 }

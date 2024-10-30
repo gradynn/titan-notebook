@@ -6,45 +6,21 @@ import NotebookDisplay from './screens/NotebookDisplay';
 
 const App: React.FC = () => {
   const notebooks: Notebook[] = [{
-      nbformat: 4,
-      nbformat_minor: 5,
-      metadata: {
-          notebook_name: "Notebook 1",
-          authors: [],
-          kernelspec: {
-              name: "python3",
-              display_name: "Python 3" 
-          }
-      },
+      filepath: null,
+      name: "Notebook 1",
       cells: [],
   }, {
-    nbformat: 4,
-    nbformat_minor: 5,
-    metadata: {
-        notebook_name: "Notebook 2",
-        authors: [],
-        kernelspec: {
-            name: "python3",
-            display_name: "Python 3" 
-        }
-    },
+    filepath: null,
+    name: "Notebook 2",
     cells: [],
-}, {
-  nbformat: 4,
-  nbformat_minor: 5,
-  metadata: {
-      notebook_name: "Notebook 3",
-      authors: [],
-      kernelspec: {
-          name: "python3",
-          display_name: "Python 3" 
-      }
-  },
-  cells: [],
-}];
+  }, {
+    filepath: null,
+    name: "Notebook 3", 
+    cells: [],
+  }];
 
   const [openNotebooks, setOpenNotebooks] = useState<Notebook[]>(notebooks);
-  const [activeNotebook, setActiveNotebook] = useState<number>(-1);
+  const [activeNotebook, setActiveNotebook] = useState<number>(0);
 
   const openNotebook = (nb: Notebook) => {
     setOpenNotebooks([...openNotebooks, nb]);

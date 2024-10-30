@@ -1,5 +1,6 @@
-import { app, BrowserWindow, screen } from 'electron';
+import { app, BrowserWindow, screen, ipcMain, dialog } from 'electron';
 import path from 'path';
+import fs from 'fs';
 
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) {
@@ -35,6 +36,35 @@ const createWindow = () => {
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
 };
+
+/*
+  =================================
+  CUSTOM HANDLERS FOR OS OPERATIONS
+  =================================
+*/
+ipcMain.handle('select-file', async () => {
+  const result = await dialog.showOpenDialog({
+    properties: ['openFile'],
+    filters: [{ name: 'Jupyter Notebooks', extensions: ['ipynb'] }],
+  });
+  return result.canceled ? null : result.filePaths[0];
+});
+
+ipcMain.handle('open-notebook-file', async (event, filePath: string) => {
+  try {
+    console.log("Received file path:", filePath);
+    const data = await fs.promises.readFile(filePath, 'utf8');
+    return JSON.parse(data);  // Return the JSON data to the renderer
+  } catch (error) {
+    console.error("Error reading JSON file:", error);
+    throw error;
+  }
+});
+/*
+  ===================
+  END CUSTOM HANDLERS
+  ===================
+*/
 
 // This method will be called when Electron has finished
 // initialization and is ready to create browser windows.
