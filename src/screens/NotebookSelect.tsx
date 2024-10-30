@@ -1,8 +1,18 @@
 import React, { useState } from "react";
-import NotebookCreatorModal from "../components/NotebookCreatorModal";
+import { IoCreateOutline } from "react-icons/io5";
+import { FaRegFolderOpen } from "react-icons/fa";
 
-const NotebookSelect = () => {
-    const [showNotebookCreatorModal, setShowNotebookCreatorModal] = useState<boolean>(false);
+import CreateNotebookModal from "../components/CreateNotebookModal";
+import PrimaryButton from "../components/buttons/PrimaryButton";
+import Notebook from "src/entities/Notebook";
+import SecondaryButton from "../components/buttons/SecondaryButton";
+
+interface NotebookSelectProps {
+    openNotebook: (nb: Notebook) => void;
+}
+
+const NotebookSelect = ( { openNotebook }: NotebookSelectProps ) => {
+    const [showCreateNotebookModal, setShowCreateNotebookModal] = useState<boolean>(false);
     
     return (
         <div className="flex flex-col items-center justify-center h-screen">
@@ -10,13 +20,11 @@ const NotebookSelect = () => {
             <p className="text-lg mb-6 text-gray-600">
                 To get started, create a new notebook.
             </p>
-            <button
-                className="px-6 py-3 text-white bg-primary rounded-md shadow-md hover:bg-cyan-600 transition"
-                onClick={() => setShowNotebookCreatorModal(!showNotebookCreatorModal)}
-            >
-                New Notebook
-            </button>
-            {showNotebookCreatorModal && <NotebookCreatorModal setShowNotebookCreatorModal={setShowNotebookCreatorModal} />}
+            <div className="flex gap-1">
+                <PrimaryButton onClick={() => setShowCreateNotebookModal(!showCreateNotebookModal)} label="Create" icon={<IoCreateOutline />} />
+                <SecondaryButton onClick={() => {}} label="Open" icon={<FaRegFolderOpen />} />
+            </div>
+            {showCreateNotebookModal && <CreateNotebookModal openNotebook={openNotebook} setShowCreateNotebookModal={setShowCreateNotebookModal} />}
         </div>
     );
 };

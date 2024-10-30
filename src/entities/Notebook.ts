@@ -11,7 +11,6 @@ export default interface Notebook {
 
 export interface KernelSpec {
     display_name: string;
-    language: string;
     name: string;
 }
 

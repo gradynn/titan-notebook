@@ -8,6 +8,8 @@ module.exports = {
       'background': '#121212',
       'background2': '#282828',
       'primary': '#007bff',
+      'secondary': '#85a4ff',
+      'white': '#ffffff',
     },
     extend: {
       fontFamily: {
