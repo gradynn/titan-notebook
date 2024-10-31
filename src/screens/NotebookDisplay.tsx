@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 
 import TabBar from "../components/notebookDisplay/TabBar";
 import Notebook from "src/entities/Notebook";
+import WorkSpace from '../components/notebookDisplay/Workspace';
 
 interface NotebookDisplayProps {
     openNotebooks: Notebook[];
@@ -22,10 +23,8 @@ const NotebookDisplay = ( { openNotebooks, closeNotebook, openNotebook, activeNo
                 openNotebook={openNotebook}
             />
 
-            <div className="flex-grow bg-gray-100 p-4">
-                <div className="notebook-content">
-                    <p>Notebook content goes here.</p>
-                </div>
+            <div className="flex-grow">
+                <WorkSpace activeNotebookContents={openNotebooks[activeNotebook]} />
             </div>
         </div> 
     )

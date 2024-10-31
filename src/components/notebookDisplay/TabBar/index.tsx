@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { CgClose } from "react-icons/cg";
 import { IoAdd } from "react-icons/io5";
-import { WiMoonAltWaxingCrescent2 } from "react-icons/wi";
+import { SiMoonrepo } from "react-icons/si";
 
 import Notebook from "src/entities/Notebook";
 import AddNotebookModal from '../../Modals/AddNotebookModal';
@@ -50,7 +50,7 @@ const TabBar = ( { openNotebooks, activeNotebook, setActiveNotebook, closeNotebo
             {openNotebooks && openNotebooks.map((item: Notebook, index: number) => (
                 <div
                     key={index} 
-                    className={`h-full flex gap-3 items-center justify-center px-3 mx-[0.5px] group whitespace-nowrap flex-grow-0 ${index == activeNotebook ? "bg-background" : "bg-background2"}`}
+                    className={`h-full flex gap-3 items-center justify-center px-3 mx-[0.5px] group whitespace-nowrap flex-grow-0 ${index == activeNotebook ? "bg-background" : "bg-background2 text-inactive"}`}
                     onClick={() => handleTabChange(index)}
                 >
                     {item?.name ?? item.filepath.split('/').pop()}
@@ -67,14 +67,10 @@ const TabBar = ( { openNotebooks, activeNotebook, setActiveNotebook, closeNotebo
                 <IoAdd />
             </div>
             <div 
-                className="absolute right-0 top-0 flex items-end justify-end bg-primary h-[50px] px-1 pl-10 shadow"
-                style={{
-                    maskImage: 'linear-gradient(to right, transparent, #007bff 25%, #007bff)',
-                    WebkitMaskImage: 'linear-gradient(to right, transparent, #007bff 25%, #007bff)'
-                }} 
+                className="absolute right-0 top-0 flex items-center justify-end gap-2 h-[50px] px-1 pl-10 shadow" 
             >
-                <WiMoonAltWaxingCrescent2  style={{ fontSize: '38px' }} />
-                <p className="font-logo text-4xl">Titan</p>
+                <SiMoonrepo className="text-primary" style={{ fontSize: '25px' }} />
+                <p className="text-primary font-logo text-4xl">Titan</p>
             </div>
             {showAddNotebookModal && <AddNotebookModal setShowAddNotebookModal={setShowAddNotebookModal} setShowCreateNotebookModal={setShowCreateNotebookModal} setShowOpenNotebookModal={setShowOpenNotebookModal} />}
             {showCreateNotebookModal && <CreateNotebookModal setShowCreateNotebookModal={setShowCreateNotebookModal} openNotebook={openNotebook} />}

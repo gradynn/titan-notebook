@@ -9,8 +9,10 @@ module.exports = {
       'background2': '#282828',
       'primary': '#007bff',
       'secondary': '#85a4ff',
-      'white': '#ffffff',
-      'danger': "#ff4444"
+      'active': '#ffffff',
+      'inactive': '#8b8b8b',
+      'danger': '#ff4444',
+      'success': '#13ae4b',
     },
     extend: {
       fontFamily: {

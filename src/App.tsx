@@ -6,9 +6,17 @@ import NotebookDisplay from './screens/NotebookDisplay';
 
 const App: React.FC = () => {
   const notebooks: Notebook[] = [{
-      filepath: null,
-      name: "Notebook 1",
-      cells: [],
+      filepath: 'file.ipynb',
+      name: null,
+      cells: [{
+        cellType: 'code',
+        executionCount: 257,
+        source: [
+          "import pandas as pd\n",
+          "import numpy as np\n",
+          "import json\n",
+        ],
+      }],
   }];
 
   const [openNotebooks, setOpenNotebooks] = useState<Notebook[]>(notebooks);
