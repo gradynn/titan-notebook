@@ -39,7 +39,8 @@ const createWindow = () => {
 
   // Attach menu
   const menu = createCustomMenu(mainWindow);
-  Menu.setApplicationMenu(menu);
+  // TODO: Hotkeys and menus should probably be one cohesive sprint
+  // Menu.setApplicationMenu(menu);
 };
 
 // This method will be called when Electron has finished

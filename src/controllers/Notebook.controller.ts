@@ -18,4 +18,4 @@ export const openNotebookFromFile = async (filePath: string): Promise<Notebook |
         console.error("Error reading JSON file:", error);
         return null;
     }
-  };
+};

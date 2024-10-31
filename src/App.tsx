@@ -9,14 +9,6 @@ const App: React.FC = () => {
       filepath: null,
       name: "Notebook 1",
       cells: [],
-  }, {
-    filepath: null,
-    name: "Notebook 2",
-    cells: [],
-  }, {
-    filepath: null,
-    name: "Notebook 3", 
-    cells: [],
   }];
 
   const [openNotebooks, setOpenNotebooks] = useState<Notebook[]>(notebooks);

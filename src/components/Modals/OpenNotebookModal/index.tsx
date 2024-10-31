@@ -1,5 +1,4 @@
 import React, { useState } from 'react';
-import { Bars } from 'react-loading-icons';
 
 import Notebook from 'src/entities/Notebook';
 import PrimaryButton from '../../buttons/PrimaryButton';
@@ -14,7 +13,6 @@ interface OpenNotebookModalProps {
 
 const OpenNotebookModal = ( { setShowOpenNotebookModal, openNotebook }: OpenNotebookModalProps ) => {
     const [notebookPath, setNotebookPath] = useState<string | null>(null);
-    const [loading, setLoading] = useState<boolean>(false); 
     
     const handleBackgroundClick = () => {
         setShowOpenNotebookModal(false);
@@ -30,7 +28,6 @@ const OpenNotebookModal = ( { setShowOpenNotebookModal, openNotebook }: OpenNote
             console.log(notebook);
             setShowOpenNotebookModal(false);
         });
-        setLoading(true);
     };
     
     return (
@@ -45,14 +42,10 @@ const OpenNotebookModal = ( { setShowOpenNotebookModal, openNotebook }: OpenNote
                 <h2 className="text-2xl mb-4">Open Notebook</h2>
                 <FileSelector setFilePath={setNotebookPath} />
                 {notebookPath && <p>File Selected: <span className="text-gray">{notebookPath}</span></p>}
-                {!loading ? (
-                    <div className="flex gap-1">
-                        <DangerButton label="Cancel" onClick={() => {setShowOpenNotebookModal(false)}}/>
-                        <PrimaryButton label="Open" onClick={handleFileSelect} />
-                    </div>
-                ) : (
-                    <Bars className="stroke-primary stroke-1" />
-                )}
+                <div className="flex gap-1">
+                    <DangerButton label="Cancel" onClick={() => {setShowOpenNotebookModal(false)}}/>
+                    <PrimaryButton label="Open" onClick={handleFileSelect} />
+                </div>
             </div>
         </div>
     );

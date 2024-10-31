@@ -11,11 +11,11 @@ class NotebookFactory {
         const cells = Array.isArray((data as any)?.cells) ? (data as any).cells : [];
         cells.map((cell: any) => {
             const cellObj: Cell = {
-                source: [''],
-                cellType: 'markdown',
-                executionCount: 0,
+                source: cell?.source ?? [],
+                cellType: cell.cell_type ?? 'code',
+                executionCount: cell?.execution_count ?? 0,
             }
-            notebook.cells.push(cell)
+            notebook.cells.push(cellObj)
         })
 
         return notebook;      
